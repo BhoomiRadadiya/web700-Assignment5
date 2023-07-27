@@ -1,0 +1,125 @@
+<div class="row">
+    <main class="col-md-12">
+        <br>
+        <h2>{{student.firstName}} {{student.lastName}} - Student: {{student.studentNum}}</h2>
+        <hr />
+
+        <form method="post" action="/student/update">
+            <input type="hidden" name="studentNum" value="{{student.studentNum}}" />
+
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>First Name:</label>
+                            <input class="form-control" name="firstName" type="text" value="{{student.firstName}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Last Name:</label>
+                            <input class="form-control" name="lastName" type="text" value="{{student.lastName}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input class="form-control" name="email" type="email" value="{{student.email}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Address (Street):</label>
+                            <input class="form-control" name="addressStreet" type="text" value="{{student.addressStreet}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address (City):</label>
+                            <input class="form-control" name="addressCity" type="text" value="{{student.addressCity}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Address (Province):</label>
+                            <input class="form-control" name="addressProvince" type="text" value="{{student.addressProvince}}" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Status</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="status-full-time">Status:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="status-full-time" value="Full Time" {{#equal student.status "Full Time"}}checked{{/equal}}>
+                                <label class="form-check-label" for="status-full-time">Full Time</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="status-part-time" value="Part Time" {{#equal student.status "Part Time"}}checked{{/equal}}>
+                                <label class="form-check-label" for="status-part-time">Part Time</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>TA</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="TA" id="TA" {{#if student.TA}}checked{{/if}}>
+                                <label class="form-check-label" for="TA">TA</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Course</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="course">Course type:</label>
+                            <select class="form-control" id="course" name="course">
+                                <option value="1" {{#equal student.course "1"}}selected{{/equal}}>Relational Database Design and Implementation</option>
+                                <option value="2" {{#equal student.course "2"}}selected{{/equal}}>Java Programming</option>
+                                <option value="3" {{#equal student.course "3"}}selected{{/equal}}>Introduction to Cloud Computing</option>
+                                <option value="4" {{#equal student.course "4"}}selected{{/equal}}>Database Administration and Management</option>
+                                <option value="5" {{#equal student.course "5"}}selected{{/equal}}>Web Programming</option>
+                                <option value="6" {{#equal student.course "6"}}selected{{/equal}}>Applied Capstone Project</option>
+                                <option value="7" {{#equal student.course "7"}}selected{{/equal}}>Database Connectivity Using Java</option>
+                                <option value="8" {{#equal student.course "8"}}selected{{/equal}}>Accessing Big Data</option>
+                                <option value="9" {{#equal student.course "9"}}selected{{/equal}}>Data warehousing</option>
+                                <option value="10" {{#equal student.course "10"}}selected{{/equal}}>Security in Databases and Web Applications</option>
+                                <option value="11" {{#equal student.course "11"}}selected{{/equal}}>Work Term Preparation (Work-Integrated Learning option only)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <input type="submit" class="btn btn-primary float-right" value="Update Student" /><br /><br /><br />
+        </form>
+    </main>
+</div>
+
+
+{{#unless student}}
+<div class="col-md-12 text-center">
+    <strong>{{message}}</strong>
+</div>
+{{/unless}}
